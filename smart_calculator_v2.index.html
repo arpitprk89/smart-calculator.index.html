@@ -1,0 +1,242 @@
+
+<h2 class="sr-only">Smart colorful scientific calculator with history and modern design</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{max-width:380px;margin:1rem auto;padding:1.5rem;background:var(--color-background-primary);border-radius:20px;border:0.5px solid var(--color-border-tertiary)}
+.title{font-size:13px;font-weight:500;color:var(--color-text-secondary);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;text-align:center}
+.display{background:var(--color-background-secondary);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1rem;min-height:100px;border:0.5px solid var(--color-border-tertiary)}
+.expr{font-size:13px;color:var(--color-text-secondary);min-height:20px;word-break:break-all;font-family:var(--font-mono)}
+.result{font-size:36px;font-weight:500;color:var(--color-text-primary);text-align:right;word-break:break-all;font-family:var(--font-mono);margin-top:8px}
+.modes{display:flex;gap:6px;margin-bottom:1rem}
+.mode-btn{flex:1;padding:8px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);background:transparent;color:var(--color-text-secondary);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s}
+.mode-btn.active-std{background:#185FA5;color:#fff;border-color:#185FA5}
+.mode-btn.active-sci{background:#3B6D11;color:#fff;border-color:#3B6D11}
+.mode-btn.active-hist{background:#853B6D;color:#fff;border-color:#853B6D}
+.grid{display:grid;gap:8px}
+.g5{grid-template-columns:repeat(5,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+button{padding:14px 4px;border-radius:12px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);color:var(--color-text-primary);font-size:15px;cursor:pointer;font-family:var(--font-mono);font-weight:500;transition:all 0.1s}
+button:hover{transform:translateY(-1px);border-color:var(--color-border-secondary)}
+button:active{transform:scale(0.96)}
+.n{background:var(--color-background-primary)}
+.op{background:#E6F1FB;color:#0C447C;border-color:#B5D4F4}
+.op:hover{background:#B5D4F4}
+.sci{background:#EAF3DE;color:#27500A;border-color:#C0DD97;font-size:12px}
+.sci:hover{background:#C0DD97}
+.clr{background:#FCEBEB;color:#791F1F;border-color:#F7C1C1}
+.clr:hover{background:#F7C1C1}
+.eq{background:#185FA5;color:#fff;border-color:#185FA5;font-size:18px}
+.eq:hover{background:#0C447C}
+.mem{background:#FAEEDA;color:#633806;border-color:#FAC775;font-size:12px}
+.mem:hover{background:#FAC775}
+.span2{grid-column:span 2}
+.hist-panel{background:var(--color-background-secondary);border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:var(--color-text-secondary);max-height:80px;overflow-y:auto;font-family:var(--font-mono)}
+.hist-item{padding:2px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.deg-rad{display:flex;gap:4px;margin-bottom:8px}
+.dr-btn{flex:1;padding:5px;border-radius:8px;border:0.5px solid var(--color-border-tertiary);background:transparent;color:var(--color-text-secondary);font-size:11px;cursor:pointer}
+.dr-btn.active{background:#3B6D11;color:#fff}
+</style>
+
+<div class="wrap">
+  <div class="title">Smart Calculator</div>
+
+  <div class="modes">
+    <button class="mode-btn active-std" id="m-std" onclick="setMode('std')">Standard</button>
+    <button class="mode-btn" id="m-sci" onclick="setMode('sci')">Scientific</button>
+    <button class="mode-btn" id="m-hist" onclick="setMode('hist')">History</button>
+  </div>
+
+  <div class="display">
+    <div class="expr" id="expr"></div>
+    <div class="result" id="result">0</div>
+  </div>
+
+  <div id="hist-panel" class="hist-panel" style="display:none"><div style="color:var(--color-text-secondary)">No history yet</div></div>
+
+  <div id="sci-panel" style="display:none;margin-bottom:8px">
+    <div class="deg-rad">
+      <button class="dr-btn active" id="deg-btn" onclick="setAngle('deg')">DEG</button>
+      <button class="dr-btn" id="rad-btn" onclick="setAngle('rad')">RAD</button>
+    </div>
+    <div class="grid g5" style="margin-bottom:8px">
+      <button class="sci" onclick="sciFunc('sin')">sin</button>
+      <button class="sci" onclick="sciFunc('cos')">cos</button>
+      <button class="sci" onclick="sciFunc('tan')">tan</button>
+      <button class="sci" onclick="sciFunc('asin')">sin⁻¹</button>
+      <button class="sci" onclick="sciFunc('acos')">cos⁻¹</button>
+      <button class="sci" onclick="sciFunc('sqrt')">√x</button>
+      <button class="sci" onclick="sciFunc('sq')">x²</button>
+      <button class="sci" onclick="sciFunc('cube')">x³</button>
+      <button class="sci" onclick="append('^')">xʸ</button>
+      <button class="sci" onclick="sciFunc('log')">log</button>
+      <button class="sci" onclick="sciFunc('ln')">ln</button>
+      <button class="sci" onclick="sciFunc('fact')">n!</button>
+      <button class="sci" onclick="sciFunc('abs')">|x|</button>
+      <button class="sci" onclick="sciFunc('perc')">%</button>
+      <button class="sci" onclick="sciFunc('inv')">1/x</button>
+    </div>
+    <div class="grid g5" style="margin-bottom:8px">
+      <button class="mem" onclick="memStore()">MS</button>
+      <button class="mem" onclick="memRecall()">MR</button>
+      <button class="mem" onclick="memAdd()">M+</button>
+      <button class="mem" onclick="memSub()">M−</button>
+      <button class="mem" onclick="memClear()">MC</button>
+    </div>
+    <div class="grid g5" style="margin-bottom:8px">
+      <button class="sci" onclick="insertConst('3.14159265358979')">π</button>
+      <button class="sci" onclick="insertConst('2.71828182845905')">e</button>
+      <button class="sci" onclick="append('(')"> ( </button>
+      <button class="sci" onclick="append(')')"> ) </button>
+      <button class="sci" onclick="sciFunc('cbrt')">∛x</button>
+    </div>
+  </div>
+
+  <div class="grid g4" style="gap:8px">
+    <button class="clr" onclick="clearAll()">AC</button>
+    <button class="clr" onclick="backspace()">⌫</button>
+    <button class="op" onclick="append('(')">( )</button>
+    <button class="op" onclick="append('/')">÷</button>
+
+    <button class="n" onclick="append('7')">7</button>
+    <button class="n" onclick="append('8')">8</button>
+    <button class="n" onclick="append('9')">9</button>
+    <button class="op" onclick="append('*')">×</button>
+
+    <button class="n" onclick="append('4')">4</button>
+    <button class="n" onclick="append('5')">5</button>
+    <button class="n" onclick="append('6')">6</button>
+    <button class="op" onclick="append('-')">−</button>
+
+    <button class="n" onclick="append('1')">1</button>
+    <button class="n" onclick="append('2')">2</button>
+    <button class="n" onclick="append('3')">3</button>
+    <button class="op" onclick="append('+')">+</button>
+
+    <button class="n span2" onclick="append('0')">0</button>
+    <button class="n" onclick="append('.')">.</button>
+    <button class="eq" onclick="calculate()">=</button>
+  </div>
+</div>
+
+<script>
+let expr='',history=[],mode='std',angleMode='deg',mem=0;
+
+function setMode(m){
+  mode=m;
+  ['std','sci','hist'].forEach(x=>{
+    let b=document.getElementById('m-'+x);
+    b.className='mode-btn'+(m===x?' active-'+x:'');
+  });
+  document.getElementById('sci-panel').style.display=m==='sci'?'block':'none';
+  document.getElementById('hist-panel').style.display=m==='hist'?'block':'none';
+  if(m==='hist')updateHist();
+}
+
+function setAngle(a){
+  angleMode=a;
+  document.getElementById('deg-btn').className='dr-btn'+(a==='deg'?' active':'');
+  document.getElementById('rad-btn').className='dr-btn'+(a==='rad'?' active':'');
+}
+
+function updateDisplay(){
+  document.getElementById('expr').textContent=expr||'';
+}
+
+function append(v){
+  if(expr==='Error')expr='';
+  if(v==='(' && expr && /[\d)]$/.test(expr)) expr+='*';
+  expr+=v;
+  updateDisplay();
+}
+
+function insertConst(v){
+  if(expr==='Error')expr='';
+  expr+=v;
+  updateDisplay();
+}
+
+function clearAll(){
+  expr='';
+  document.getElementById('result').textContent='0';
+  updateDisplay();
+}
+
+function backspace(){
+  expr=expr.slice(0,-1);
+  updateDisplay();
+}
+
+function toRad(v){return angleMode==='deg'?v*Math.PI/180:v;}
+function fromRad(v){return angleMode==='deg'?v*180/Math.PI:v;}
+
+function sciFunc(f){
+  if(expr==='Error')expr='';
+  let v=parseFloat(document.getElementById('result').textContent)||0;
+  let res,label=f;
+  try{
+    if(f==='sin'){res=Math.sin(toRad(v));}
+    else if(f==='cos'){res=Math.cos(toRad(v));}
+    else if(f==='tan'){res=Math.tan(toRad(v));}
+    else if(f==='asin'){res=fromRad(Math.asin(v));}
+    else if(f==='acos'){res=fromRad(Math.acos(v));}
+    else if(f==='log'){res=Math.log10(v);}
+    else if(f==='ln'){res=Math.log(v);}
+    else if(f==='sqrt'){res=Math.sqrt(v);}
+    else if(f==='cbrt'){res=Math.cbrt(v);}
+    else if(f==='sq'){res=v*v;label='x²';}
+    else if(f==='cube'){res=v*v*v;label='x³';}
+    else if(f==='inv'){res=1/v;label='1/x';}
+    else if(f==='fact'){let n=Math.round(v);res=1;for(let i=2;i<=n;i++)res*=i;label='n!';}
+    else if(f==='abs'){res=Math.abs(v);label='|x|';}
+    else if(f==='perc'){res=v/100;label='%';}
+    let r=parseFloat(res.toFixed(10));
+    addHistory(label+'('+v+') = '+r);
+    document.getElementById('result').textContent=r;
+    expr=String(r);
+    updateDisplay();
+  }catch(e){document.getElementById('result').textContent='Error';}
+}
+
+function memStore(){mem=parseFloat(document.getElementById('result').textContent)||0;}
+function memRecall(){append(String(mem));}
+function memAdd(){mem+=parseFloat(document.getElementById('result').textContent)||0;}
+function memSub(){mem-=parseFloat(document.getElementById('result').textContent)||0;}
+function memClear(){mem=0;}
+
+function calculate(){
+  try{
+    let e=expr.replace(/\^/g,'**');
+    let r=Function('"use strict";return ('+e+')')();
+    let rounded=parseFloat(r.toFixed(10));
+    addHistory(expr+' = '+rounded);
+    document.getElementById('result').textContent=rounded;
+    expr=String(rounded);
+    updateDisplay();
+  }catch(e){
+    document.getElementById('result').textContent='Error';
+    expr='Error';
+  }
+}
+
+function addHistory(entry){
+  history.unshift(entry);
+  if(history.length>30)history.pop();
+  if(mode==='hist')updateHist();
+}
+
+function updateHist(){
+  let p=document.getElementById('hist-panel');
+  p.innerHTML=history.length?history.map(h=>'<div class="hist-item">'+h+'</div>').join(''):'<div>No history yet</div>';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key>='0'&&e.key<='9')append(e.key);
+  else if(['+','-','*','/'].includes(e.key))append(e.key);
+  else if(e.key==='.')append('.');
+  else if(e.key==='('||e.key===')')append(e.key);
+  else if(e.key==='Enter'||e.key==='=')calculate();
+  else if(e.key==='Backspace')backspace();
+  else if(e.key==='Escape')clearAll();
+});
+</script>
