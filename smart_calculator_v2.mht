@@ -1,0 +1,215 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: file:///Users/mac/Downloads/smart_calculator_v2.html
+Subject: 
+Date: Sun, 26 Apr 2026 06:19:14 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--y0Fy7wBqpBcmOTJ9Wdz9HVlOMIOlljxOZAyWxJOBmL----"
+
+
+------MultipartBoundary--y0Fy7wBqpBcmOTJ9Wdz9HVlOMIOlljxOZAyWxJOBmL----
+Content-Type: text/html
+Content-ID: <frame-CCD5E8687DB35E814CBCAC7786ED2C6C@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///Users/mac/Downloads/smart_calculator_v2.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-af2968=
+5f-9bd6-450a-9345-f5e915befdbc@mhtml.blink" /></head><body><h2 class=3D"sr-=
+only">Smart colorful scientific calculator with history and modern design</=
+h2>
+
+
+<div class=3D"wrap">
+  <div class=3D"title">Smart Calculator</div>
+
+  <div class=3D"modes">
+    <button class=3D"mode-btn" id=3D"m-std">Standard</button>
+    <button class=3D"mode-btn active-sci" id=3D"m-sci">Scientific</button>
+    <button class=3D"mode-btn" id=3D"m-hist">History</button>
+  </div>
+
+  <div class=3D"display">
+    <div class=3D"expr" id=3D"expr"></div>
+    <div class=3D"result" id=3D"result">0</div>
+  </div>
+
+  <div id=3D"hist-panel" class=3D"hist-panel" style=3D"display: none;"><div=
+ class=3D"hist-item">16665-666 =3D 15999</div><div class=3D"hist-item">cos(=
+0) =3D 1</div></div>
+
+  <div id=3D"sci-panel" style=3D"display: block; margin-bottom: 8px;">
+    <div class=3D"deg-rad">
+      <button class=3D"dr-btn active" id=3D"deg-btn">DEG</button>
+      <button class=3D"dr-btn" id=3D"rad-btn">RAD</button>
+    </div>
+    <div class=3D"grid g5" style=3D"margin-bottom:8px">
+      <button class=3D"sci">sin</button>
+      <button class=3D"sci">cos</button>
+      <button class=3D"sci">tan</button>
+      <button class=3D"sci">sin=E2=81=BB=C2=B9</button>
+      <button class=3D"sci">cos=E2=81=BB=C2=B9</button>
+      <button class=3D"sci">=E2=88=9Ax</button>
+      <button class=3D"sci">x=C2=B2</button>
+      <button class=3D"sci">x=C2=B3</button>
+      <button class=3D"sci">x=CA=B8</button>
+      <button class=3D"sci">log</button>
+      <button class=3D"sci">ln</button>
+      <button class=3D"sci">n!</button>
+      <button class=3D"sci">|x|</button>
+      <button class=3D"sci">%</button>
+      <button class=3D"sci">1/x</button>
+    </div>
+    <div class=3D"grid g5" style=3D"margin-bottom:8px">
+      <button class=3D"mem">MS</button>
+      <button class=3D"mem">MR</button>
+      <button class=3D"mem">M+</button>
+      <button class=3D"mem">M=E2=88=92</button>
+      <button class=3D"mem">MC</button>
+    </div>
+    <div class=3D"grid g5" style=3D"margin-bottom:8px">
+      <button class=3D"sci">=CF=80</button>
+      <button class=3D"sci">e</button>
+      <button class=3D"sci"> ( </button>
+      <button class=3D"sci"> ) </button>
+      <button class=3D"sci">=E2=88=9Bx</button>
+    </div>
+  </div>
+
+  <div class=3D"grid g4" style=3D"gap:8px">
+    <button class=3D"clr">AC</button>
+    <button class=3D"clr">=E2=8C=AB</button>
+    <button class=3D"op">( )</button>
+    <button class=3D"op">=C3=B7</button>
+
+    <button class=3D"n">7</button>
+    <button class=3D"n">8</button>
+    <button class=3D"n">9</button>
+    <button class=3D"op">=C3=97</button>
+
+    <button class=3D"n">4</button>
+    <button class=3D"n">5</button>
+    <button class=3D"n">6</button>
+    <button class=3D"op">=E2=88=92</button>
+
+    <button class=3D"n">1</button>
+    <button class=3D"n">2</button>
+    <button class=3D"n">3</button>
+    <button class=3D"op">+</button>
+
+    <button class=3D"n span2">0</button>
+    <button class=3D"n">.</button>
+    <button class=3D"eq">=3D</button>
+  </div>
+</div>
+
+
+</body></html>
+------MultipartBoundary--y0Fy7wBqpBcmOTJ9Wdz9HVlOMIOlljxOZAyWxJOBmL----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-af29685f-9bd6-450a-9345-f5e915befdbc@mhtml.blink
+
+@charset "utf-8";
+
+* { box-sizing: border-box; margin: 0px; padding: 0px; }
+
+body { font-family: var(--font-sans); }
+
+.wrap { max-width: 380px; margin: 1rem auto; padding: 1.5rem; background: v=
+ar(--color-background-primary); border-radius: 20px; border: 0.5px solid va=
+r(--color-border-tertiary); }
+
+.title { font-size: 13px; font-weight: 500; color: var(--color-text-seconda=
+ry); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; t=
+ext-align: center; }
+
+.display { background: var(--color-background-secondary); border-radius: 16=
+px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; min-height: 100px; border=
+: 0.5px solid var(--color-border-tertiary); }
+
+.expr { font-size: 13px; color: var(--color-text-secondary); min-height: 20=
+px; word-break: break-all; font-family: var(--font-mono); }
+
+.result { font-size: 36px; font-weight: 500; color: var(--color-text-primar=
+y); text-align: right; word-break: break-all; font-family: var(--font-mono)=
+; margin-top: 8px; }
+
+.modes { display: flex; gap: 6px; margin-bottom: 1rem; }
+
+.mode-btn { flex: 1 1 0%; padding: 8px; border-radius: 20px; border: 0.5px =
+solid var(--color-border-tertiary); background: transparent; color: var(--c=
+olor-text-secondary); font-size: 12px; font-weight: 500; cursor: pointer; t=
+ransition: all 0.15s ease 0s; }
+
+.mode-btn.active-std { background: rgb(24, 95, 165); color: rgb(255, 255, 2=
+55); border-color: rgb(24, 95, 165); }
+
+.mode-btn.active-sci { background: rgb(59, 109, 17); color: rgb(255, 255, 2=
+55); border-color: rgb(59, 109, 17); }
+
+.mode-btn.active-hist { background: rgb(133, 59, 109); color: rgb(255, 255,=
+ 255); border-color: rgb(133, 59, 109); }
+
+.grid { display: grid; gap: 8px; }
+
+.g5 { grid-template-columns: repeat(5, 1fr); }
+
+.g4 { grid-template-columns: repeat(4, 1fr); }
+
+button { padding: 14px 4px; border-radius: 12px; border: 0.5px solid var(--=
+color-border-tertiary); background: var(--color-background-primary); color:=
+ var(--color-text-primary); font-size: 15px; cursor: pointer; font-family: =
+var(--font-mono); font-weight: 500; transition: all 0.1s ease 0s; }
+
+button:hover { transform: translateY(-1px); border-color: var(--color-borde=
+r-secondary); }
+
+button:active { transform: scale(0.96); }
+
+.n { background: var(--color-background-primary); }
+
+.op { background: rgb(230, 241, 251); color: rgb(12, 68, 124); border-color=
+: rgb(181, 212, 244); }
+
+.op:hover { background: rgb(181, 212, 244); }
+
+.sci { background: rgb(234, 243, 222); color: rgb(39, 80, 10); border-color=
+: rgb(192, 221, 151); font-size: 12px; }
+
+.sci:hover { background: rgb(192, 221, 151); }
+
+.clr { background: rgb(252, 235, 235); color: rgb(121, 31, 31); border-colo=
+r: rgb(247, 193, 193); }
+
+.clr:hover { background: rgb(247, 193, 193); }
+
+.eq { background: rgb(24, 95, 165); color: rgb(255, 255, 255); border-color=
+: rgb(24, 95, 165); font-size: 18px; }
+
+.eq:hover { background: rgb(12, 68, 124); }
+
+.mem { background: rgb(250, 238, 218); color: rgb(99, 56, 6); border-color:=
+ rgb(250, 199, 117); font-size: 12px; }
+
+.mem:hover { background: rgb(250, 199, 117); }
+
+.span2 { grid-column: span 2 / auto; }
+
+.hist-panel { background: var(--color-background-secondary); border-radius:=
+ 12px; padding: 10px 14px; margin-bottom: 10px; font-size: 12px; color: var=
+(--color-text-secondary); max-height: 80px; overflow-y: auto; font-family: =
+var(--font-mono); }
+
+.hist-item { padding: 2px 0px; border-bottom: 0.5px solid var(--color-borde=
+r-tertiary); }
+
+.deg-rad { display: flex; gap: 4px; margin-bottom: 8px; }
+
+.dr-btn { flex: 1 1 0%; padding: 5px; border-radius: 8px; border: 0.5px sol=
+id var(--color-border-tertiary); background: transparent; color: var(--colo=
+r-text-secondary); font-size: 11px; cursor: pointer; }
+
+.dr-btn.active { background: rgb(59, 109, 17); color: rgb(255, 255, 255); }
+------MultipartBoundary--y0Fy7wBqpBcmOTJ9Wdz9HVlOMIOlljxOZAyWxJOBmL------
